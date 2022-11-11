@@ -17,23 +17,25 @@
 </template>
 
 <script>
-import AuthService from "../services/AuthService.js";
+import { mapActions } from "vuex";
+
 export default {
   name: "HomePage",
   data() {
     return {
       username: "Eberson1",
       password: "password",
-      authService: new AuthService(),
     };
   },
   methods: {
+    ...mapActions(["signInStore", "signOutStore"]),
     async singIn() {
       let formData = {
         username: this.username,
         password: this.password,
       };
-      await this.authService.singIn(formData);
+      await this.signInStore(formData);
+      console.log(this.$store.state.auth.user);
     },
   },
 };
