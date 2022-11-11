@@ -12,7 +12,7 @@ window.axios.interceptors.response.use(
   },
   function (error) {
     if (401 === error.response.status) {
-      store.dispatch("logout").then(() => {
+      store.dispatch("signOutStore").then(() => {
         router.push("/");
       });
     } else {

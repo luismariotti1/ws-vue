@@ -35,7 +35,9 @@ export default {
         password: this.password,
       };
       await this.signInStore(formData);
-      console.log(this.$store.state.auth.user);
+      if (this.$store.state.auth.user) {
+        this.$router.push("/dashboard");
+      }
     },
   },
 };
